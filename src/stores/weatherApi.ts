@@ -39,7 +39,7 @@ export const useWeatherApiStore = defineStore({
     },
     CITY_COORDS_REQUEST(city: string) {
       axios
-        .get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=924bdba454482fce947584b28d955c30`)
+        .get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=924bdba454482fce947584b28d955c30`)
         .then(response => {
           this.API_REQUEST({lat: response.data[0].lat, lon: response.data[0].lon}, city);
         })
