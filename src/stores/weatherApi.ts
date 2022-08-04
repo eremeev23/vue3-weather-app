@@ -37,6 +37,7 @@ export const useWeatherApiStore = defineStore({
         })
         .catch(err => console.log(err))
     },
+
     CITY_COORDS_REQUEST(city: string) {
       axios
         .get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=924bdba454482fce947584b28d955c30`)
@@ -45,13 +46,19 @@ export const useWeatherApiStore = defineStore({
         })
         .catch(err => console.log(err))
     },
+
     DELETE_CITY(city: string) {
       const cityObj = this.weatherData.find(item => item.city === city),
         i = cityObj ? this.weatherData.indexOf(cityObj) : null;
 
       if (i !== null) {
         this.weatherData.splice(i, 1);
+        window.localStorage.setItem('weather_data', JSON.stringify(this.weatherData))
       }
+    },
+
+    UPDATE_LOCAL_LIST() {
+      window.localStorage.setItem('weather_data', JSON.stringify(this.weatherData))
     }
   }
 })

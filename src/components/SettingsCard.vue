@@ -3,7 +3,6 @@
   import { useWeatherApiStore } from "@/stores/weatherApi";
   import { ref } from "vue";
   import type { WeatherData } from "@/types/data.js";
-
   // ref variables
   const input = ref(''),
       error = ref(false),
@@ -15,16 +14,22 @@
   list.value = [...weatherApi.weatherData];
 
   // Methods
-  const checkMove = () => {
+  const endDrag = () => {
+    dragging.value = false;
+
     weatherApi.$patch({
       weatherData: list.value
     })
+
+    window.localStorage.setItem('weather_data', JSON.stringify(weatherApi.weatherData))
   }
 
   const closeSettings = ():void => {
     weatherApi.$patch({
       settingsOpened: false
     })
+
+    window.localStorage.setItem('weather_data', JSON.stringify(weatherApi.weatherData))
   }
 
   const deleteCity = (city:string):void => {
@@ -61,9 +66,8 @@
         item-key="name"
         class="setting-card__cities"
         ghost-class="ghost"
-        :move="checkMove"
         @start="dragging = true"
-        @end="dragging = false"
+        @end="endDrag"
     >
       <template #item="{ element }">
         <div class="setting-card__cities-item" :class="{ 'not-draggable': !enabled }">

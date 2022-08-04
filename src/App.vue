@@ -19,6 +19,7 @@
 
   // Checking if the client has his own list already
   const currentList = window.localStorage.getItem('weather_data');
+
   if (currentList) {
     weatherApi.$patch({
       weatherData: JSON.parse(currentList)
