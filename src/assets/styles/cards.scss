@@ -1,0 +1,172 @@
+.card {
+  padding: 20px;
+  width: 100%;
+  max-width: 340px;
+  box-shadow: 0 5px 25px 5px rgba(0 0 0 / .1);
+  border-radius: 8px;
+}
+
+.weather-card {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    &-city {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+
+  &__main {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &_img {
+      width: 80px;
+      height: 80px;
+    }
+
+    &_temp {
+      font-size: 42px;
+      font-weight: 500;
+    }
+  }
+
+  &__info {
+    color: #333;
+
+    &-secondary {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 15px 10px;
+
+      &_item {
+        display: flex;
+        align-items: center;
+        svg {
+          margin-right: 5px;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+.setting-card {
+  &__header {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    span {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+
+  &__cities {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &-item {
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f1f1f1;
+
+      div {
+        display: flex;
+        align-items: center;
+
+        .drag-button {
+          display: flex;
+          align-items: center;
+          height: 20px;
+          padding: 0 0 3px;
+          margin-right: 7px;
+          cursor: grab;
+
+          span {
+            position: relative;
+            display: inline-block;
+            width: 16px;
+            height: 1.5px;
+            background-color: #333;
+
+            &::before, &::after {
+              cursor: grab;
+              position: absolute;
+              content: '';
+              width: 16px;
+              height: 1.5px;
+              left: 0;
+              background-color: #333;
+            }
+
+            &::before {
+              top: -5px;
+            }
+
+            &::after {
+              top: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__add-new {
+    &_title {
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+  }
+}
+
+.add-city-form {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__input {
+    outline-color: #659dff;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    height: 100%;
+    border: 1px solid #333;
+
+    &.error {
+      border-color: #ff3333;
+    }
+
+    &::placeholder {
+      color: #c5c5c5;
+    }
+  }
+
+  &__submit {
+    padding: 5px 0 3px;
+    width: 40px;
+  }
+
+  &__error {
+    position: absolute;
+    bottom: -14px;
+    left: 0;
+    color: #ff3333;
+    font-size: 11px;
+    font-weight: 500;
+  }
+}
