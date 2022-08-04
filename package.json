@@ -1,6 +1,7 @@
 {
   "name": "weather-app",
   "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vite --port 3002",
     "build": "run-p type-check build-only",

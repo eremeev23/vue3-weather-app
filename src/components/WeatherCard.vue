@@ -2,7 +2,9 @@
   import { computed } from "vue";
   import { useWeatherApiStore } from "@/stores/weatherApi";
 
-  const props = defineProps({weather: Object});
+  const props = defineProps({
+    weather: {type: Object, required: true}
+  });
   const weatherApi = useWeatherApiStore();
 
   // Convert wind direction from degrees to compass direction
