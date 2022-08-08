@@ -55,7 +55,7 @@
       <span>
         Setting
       </span>
-      <button @click="closeSettings">
+      <button v-if="weatherApi.weatherData.length" @click="closeSettings">
         <img src="/src/assets/svg/icon-close.svg" alt="">
       </button>
     </div>
